@@ -34,25 +34,29 @@ autowrap = true
 wait_time = 2.0
 one_shot = true
 
-[node name="Retry" type="Button" parent="."]
-anchor_top = 1.0
-anchor_bottom = 1.0
-margin_left = 176.0
-margin_top = -152.0
-margin_right = 319.0
-margin_bottom = -110.0
-text = "Retry"
+[node name="Menu" type="GridContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -128.0
+margin_top = -12.0
+margin_right = 126.0
+margin_bottom = 80.0
+__meta__ = {
+"_edit_group_": true
+}
 
-[node name="NextLevel" type="Button" parent="."]
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -352.0
-margin_top = -152.0
-margin_right = -100.0
-margin_bottom = -110.0
+[node name="NextLevel" type="Button" parent="Menu"]
+margin_right = 254.0
+margin_bottom = 44.0
 text = "Next Level"
 
+[node name="Retry" type="Button" parent="Menu"]
+margin_top = 48.0
+margin_right = 254.0
+margin_bottom = 92.0
+text = "Retry"
+
 [connection signal="timeout" from="MessageTimer" to="." method="_on_MessageTimer_timeout"]
-[connection signal="pressed" from="Retry" to="." method="_on_Retry_pressed"]
+[connection signal="pressed" from="Menu/Retry" to="." method="_on_Retry_pressed"]

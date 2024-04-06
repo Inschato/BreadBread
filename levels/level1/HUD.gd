@@ -13,9 +13,13 @@ func show_game_over():
 	show_message("Game Over")	
 	yield($MessageTimer, "timeout")
 	
-	$Retry.show()
+	$Menu.show()
+	$Menu/Retry.grab_focus()
 	if (game_score >= 10):
-		$NextLevel.show()
+		$Menu/NextLevel.disabled = false
+		$Menu/NextLevel.grab_focus()
+	else:
+		$Menu/NextLevel.disabled = true
 	
 	yield(get_tree().create_timer(1), "timeout")
 	
@@ -25,8 +29,7 @@ func update_score(score):
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$Retry.hide()
-	$NextLevel.hide()
+	$Menu.hide()
 	pass # Replace with function body.
 
 
@@ -40,6 +43,5 @@ func _on_MessageTimer_timeout():
 
 
 func _on_Retry_pressed():
+	$Menu.hide()
 	emit_signal("start_game")
-	$Retry.hide()
-	$NextLevel.hide()

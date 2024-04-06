@@ -10,6 +10,7 @@ var dodge_bread = preload("res://levels/level1/DodgeBread.tscn").instance()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$MainMenu/GridContainer/NewGameButton.grab_focus()
 	pass # Replace with function body.
 
 
