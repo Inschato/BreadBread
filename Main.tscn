@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://fonts/Gingerbread-ExEW.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Main.gd" type="Script" id=2]
+[ext_resource path="res://ui/Options.tscn" type="PackedScene" id=3]
 
 [sub_resource type="DynamicFont" id=1]
 size = 48
@@ -11,6 +12,10 @@ font_data = ExtResource( 1 )
 script = ExtResource( 2 )
 
 [node name="MainMenu" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="MainMenu"]
+anchor_right = 1.0
+anchor_bottom = 1.0
 
 [node name="Title" type="Label" parent="MainMenu"]
 anchor_left = 0.5
@@ -22,7 +27,7 @@ margin_bottom = 128.0
 custom_fonts/font = SubResource( 1 )
 text = "BreadBread"
 
-[node name="GridContainer" type="GridContainer" parent="MainMenu"]
+[node name="MainMenuGrid" type="GridContainer" parent="MainMenu"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -32,9 +37,39 @@ margin_top = -21.0
 margin_right = 107.0
 margin_bottom = 21.0
 
-[node name="NewGameButton" type="Button" parent="MainMenu/GridContainer"]
+[node name="NewGameButton" type="Button" parent="MainMenu/MainMenuGrid"]
 margin_right = 228.0
 margin_bottom = 44.0
 text = "New Game"
 
-[connection signal="pressed" from="MainMenu/GridContainer/NewGameButton" to="." method="_on_NewGameButton_pressed"]
+[node name="LevelSelectButton" type="Button" parent="MainMenu/MainMenuGrid"]
+margin_top = 48.0
+margin_right = 228.0
+margin_bottom = 92.0
+disabled = true
+text = "???"
+
+[node name="OptionsButton" type="Button" parent="MainMenu/MainMenuGrid"]
+margin_top = 96.0
+margin_right = 228.0
+margin_bottom = 140.0
+text = "Options"
+
+[node name="CreditsButton" type="Button" parent="MainMenu/MainMenuGrid"]
+margin_top = 144.0
+margin_right = 228.0
+margin_bottom = 188.0
+text = "Credits"
+
+[node name="LevelSplashGrid" type="GridContainer" parent="MainMenu"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="OptionsMenu" parent="." instance=ExtResource( 3 )]
+visible = false
+
+[connection signal="pressed" from="MainMenu/MainMenuGrid/NewGameButton" to="." method="_on_NewGameButton_pressed"]
+[connection signal="pressed" from="MainMenu/MainMenuGrid/OptionsButton" to="." method="_on_OptionsButton_pressed"]
+[connection signal="music_volume_changed" from="OptionsMenu" to="." method="_on_OptionsMenu_music_volume_changed"]
+[connection signal="options_back" from="OptionsMenu" to="." method="_on_OptionsMenu_options_back"]
+[connection signal="sound_volume_changed" from="OptionsMenu" to="." method="_on_OptionsMenu_sound_volume_changed"]
