@@ -12,7 +12,7 @@ var starting_position
 func _ready():
 	pass
 
-func _on_VisibilityNotifier2D_viewport_exited(viewport):
+func _on_VisibilityNotifier2D_viewport_exited(_viewport):
 	handle_hit()
 
 func handle_hit():
@@ -26,7 +26,7 @@ func _physics_process(delta):
 	if Input.is_action_pressed("move_up"):
 		velocity.y -= 15
 		velocity.y = min(velocity.y, FLY_STRENGTH)
-		move_and_collide(velocity * delta)
+		var _collision = move_and_collide(velocity * delta)
 		rotation_degrees = -35
 	else:
 		rotation_degrees = 0

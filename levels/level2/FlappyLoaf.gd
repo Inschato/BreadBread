@@ -57,7 +57,7 @@ func spawn_walls(x_offset = 0):
 	
 
 
-func _on_ScoreCounter_body_entered(body):
+func _on_ScoreCounter_body_entered(_body):
 	if (playing):
 		score += 1
 		$HUD/Score.text = str(score)
