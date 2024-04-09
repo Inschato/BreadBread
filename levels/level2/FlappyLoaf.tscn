@@ -6,6 +6,7 @@
 
 [node name="FlappyLoaf" type="Node"]
 script = ExtResource( 1 )
+wall_scene = ExtResource( 3 )
 
 [node name="WallSpawnLine" type="Line2D" parent="."]
 points = PoolVector2Array( 896, 88, 896, 112, 896, 136, 896, 168, 896, 200, 896, 224, 896, 248, 896, 280, 896, 320, 896, 352, 896, 376, 896, 416, 896, 448, 896, 480, 896, 496 )
@@ -20,7 +21,8 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Wall" parent="." instance=ExtResource( 3 )]
-position = Vector2( 192, 576 )
+[node name="WallTimer" type="Timer" parent="."]
+wait_time = 3.0
 
 [connection signal="hit" from="Player" to="." method="game_over"]
+[connection signal="timeout" from="WallTimer" to="." method="spawn_walls"]

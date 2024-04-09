@@ -33,10 +33,13 @@ func _physics_process(delta):
 	
 	var motion = velocity * delta
 	
-	move_and_collide(motion)
+	var collision = move_and_collide(motion)
+	if collision:
+		handle_hit()
 	
 func start(pos):
 	position = pos
+	velocity = Vector2()
 	show()
 	$CollisionPolygon2D.disabled = false
 	

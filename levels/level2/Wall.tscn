@@ -1,11 +1,13 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://art/Saw.png" type="Texture" id=1]
+[ext_resource path="res://levels/level2/Wall.gd" type="Script" id=2]
 
 [node name="Wall" type="RigidBody2D"]
-mode = 3
+collision_mask = 0
 gravity_scale = 0.0
 linear_velocity = Vector2( -5, 0 )
+script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
 rotation = 1.5708
@@ -18,3 +20,5 @@ polygon = PoolVector2Array( -39, -100, 39, -99, 5, 97, -36, 96 )
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
 position = Vector2( 0.5, -7.62939e-06 )
+
+[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]

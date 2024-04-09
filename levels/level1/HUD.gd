@@ -1,7 +1,5 @@
 extends CanvasLayer
 
-signal start_game
-
 var game_score
 	
 func update_score(score):

@@ -51,7 +51,7 @@ func _process(delta):
 		rotation = velocity.angle()
 
 
-func _on_Player_body_entered(body):
+func _on_Player_body_entered(_body):
 	hide()
 	emit_signal("hit")
 	$CollisionPolygon2D.set_deferred("disabled", true)
