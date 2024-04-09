@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://levels/level2/FlappyLoaf.gd" type="Script" id=1]
+[ext_resource path="res://levels/level2/FlappyPlayer.tscn" type="PackedScene" id=2]
+[ext_resource path="res://levels/level2/Wall.tscn" type="PackedScene" id=3]
+
+[node name="FlappyLoaf" type="Node"]
+script = ExtResource( 1 )
+
+[node name="WallSpawnLine" type="Line2D" parent="."]
+points = PoolVector2Array( 896, 88, 896, 112, 896, 136, 896, 168, 896, 200, 896, 224, 896, 248, 896, 280, 896, 320, 896, 352, 896, 376, 896, 416, 896, 448, 896, 480, 896, 496 )
+width = 1.0
+
+[node name="PlayerSpawn" type="Position2D" parent="."]
+position = Vector2( 192, 320 )
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+visible = false
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Wall" parent="." instance=ExtResource( 3 )]
+position = Vector2( 192, 576 )
+
+[connection signal="hit" from="Player" to="." method="game_over"]
