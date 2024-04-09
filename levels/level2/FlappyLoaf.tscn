@@ -9,7 +9,7 @@ script = ExtResource( 1 )
 wall_scene = ExtResource( 3 )
 
 [node name="WallSpawnLine" type="Line2D" parent="."]
-points = PoolVector2Array( 896, 88, 896, 112, 896, 136, 896, 168, 896, 200, 896, 224, 896, 248, 896, 280, 896, 320, 896, 352, 896, 376, 896, 416, 896, 448, 896, 480, 896, 496 )
+points = PoolVector2Array( 896, 112, 896, 136, 896, 168, 896, 200, 896, 224, 896, 248, 896, 280, 896, 320, 896, 352, 896, 376, 896, 416, 896, 448, 896, 480, 896, 496 )
 width = 1.0
 
 [node name="PlayerSpawn" type="Position2D" parent="."]

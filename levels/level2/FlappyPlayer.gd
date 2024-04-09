@@ -25,7 +25,7 @@ func _physics_process(delta):
 	
 	if Input.is_action_pressed("move_up"):
 		velocity.y -= 15
-		velocity.y = min(velocity.y, FLY_STRENGTH)		
+		velocity.y = min(velocity.y, FLY_STRENGTH)
 		move_and_collide(velocity * delta)
 		rotation_degrees = -35
 	else:
