@@ -12,7 +12,7 @@ func game_over():
 		playing = false
 		$Player.hide()
 		$Player/CollisionPolygon2D.set_deferred("disabled", true)
-		emit_signal("game_over", false)
+		emit_signal("game_over", score >= 5)
 
 func _ready():
 	playing = false
@@ -20,6 +20,7 @@ func _ready():
 
 func new_game():
 	score = 0
+	$HUD/Score.text = str(score)
 	playing = true
 	emit_signal("show_message", "Go!")
 	$Player.start($PlayerSpawn.position)
@@ -37,6 +38,7 @@ func spawn_walls(x_offset = 0):
 	var wall2 = wall_scene.instance()
 	wall2.get_node("Sprite").scale.x = -2	
 	wall2.get_node("CollisionPolygon2D").scale.y = -2
+	wall2.set_collision_layer_bit(1, true) # Detect score when passing
 	
 	var wall_spawn_location = $WallSpawnLine.points[randi() % $WallSpawnLine.points.size()]
 	
@@ -53,3 +55,9 @@ func spawn_walls(x_offset = 0):
 	add_child(wall1)
 	add_child(wall2)
 	
+
+
+func _on_ScoreCounter_body_entered(body):
+	if (playing):
+		score += 1
+		$HUD/Score.text = str(score)

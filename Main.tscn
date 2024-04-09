@@ -106,6 +106,8 @@ margin_top = -19.2
 margin_right = 125.0
 margin_bottom = 19.8
 text = "Game Over"
+align = 1
+valign = 1
 
 [connection signal="pressed" from="MainMenu/MainMenuGrid/NewGameButton" to="." method="_on_NewGameButton_pressed"]
 [connection signal="pressed" from="MainMenu/MainMenuGrid/OptionsButton" to="." method="_on_OptionsButton_pressed"]
