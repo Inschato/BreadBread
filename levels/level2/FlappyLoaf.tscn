@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://levels/level2/FlappyLoaf.gd" type="Script" id=1]
 [ext_resource path="res://levels/level2/FlappyPlayer.tscn" type="PackedScene" id=2]
 [ext_resource path="res://levels/level2/Wall.tscn" type="PackedScene" id=3]
+[ext_resource path="res://music/Shake and Bake.ogg" type="AudioStream" id=4]
+[ext_resource path="res://art/gameover.wav" type="AudioStream" id=5]
 
 [sub_resource type="LineShape2D" id=1]
 normal = Vector2( 1, 0 )
@@ -40,6 +42,7 @@ collision_mask = 2
 shape = SubResource( 1 )
 
 [node name="HUD" type="CanvasLayer" parent="."]
+layer = 0
 
 [node name="Score" type="Label" parent="HUD"]
 anchor_left = 0.5
@@ -47,6 +50,14 @@ anchor_right = 0.5
 margin_left = -20.0
 margin_right = 20.0
 margin_bottom = 38.0
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+bus = "Music"
+
+[node name="DeathSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+bus = "Sound"
 
 [connection signal="hit" from="Player" to="." method="game_over"]
 [connection signal="timeout" from="WallTimer" to="." method="spawn_walls"]

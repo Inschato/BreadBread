@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/poker_night.ogg-772e509482e2fd4e62a80cd8041383b3.oggstr"
+
+[deps]
+
+source_file="res://music/poker_night.ogg"
+dest_files=[ "res://.import/poker_night.ogg-772e509482e2fd4e62a80cd8041383b3.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
