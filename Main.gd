@@ -105,3 +105,15 @@ func _on_NextLevelButton_pressed():
 	$GameHolder.add_child(current_game)
 	current_game.new_game()
 
+func _on_CreditsButton_pressed():
+	$MenuHolder/MainMenu.hide()
+	$MenuHolder/Credits/BackButton.grab_focus()
+	$MenuHolder/Credits.show()
+
+func credits_back_button_pressed():
+	$MenuHolder/Credits.hide()
+	open()
+
+
+func _on_CreditsLabel_meta_clicked(meta):
+	OS.shell_open(str(meta))

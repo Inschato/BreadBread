@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/BreadBread_Menu.mp3-ebd3cab3ed1eefeb4b0cb447fec76768.mp3str"
+
+[deps]
+
+source_file="res://music/BreadBread_Menu.mp3"
+dest_files=[ "res://.import/BreadBread_Menu.mp3-ebd3cab3ed1eefeb4b0cb447fec76768.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
