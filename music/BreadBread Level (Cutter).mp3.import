@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/BreadBread Level (Cutter).mp3-d7de7f2242ee2edb98b632f7db6e7c55.mp3str"
+
+[deps]
+
+source_file="res://music/BreadBread Level (Cutter).mp3"
+dest_files=[ "res://.import/BreadBread Level (Cutter).mp3-d7de7f2242ee2edb98b632f7db6e7c55.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/BreadBread Menu SFX Button Hover.mp3-0dc0cde8024d0c384698f53ed98cb29e.mp3str"
+
+[deps]
+
+source_file="res://sounds/BreadBread Menu SFX Button Hover.mp3"
+dest_files=[ "res://.import/BreadBread Menu SFX Button Hover.mp3-0dc0cde8024d0c384698f53ed98cb29e.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

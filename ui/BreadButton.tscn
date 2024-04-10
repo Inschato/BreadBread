@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://sounds/BreadBread Menu SFX Button Click.tres" type="AudioStream" id=1]
+[ext_resource path="res://sounds/BreadBread Menu SFX Button Hover.tres" type="AudioStream" id=2]
+[ext_resource path="res://ui/BreadButton.gd" type="Script" id=3]
+
+[node name="BreadButton" type="Button"]
+margin_right = 6.0
+margin_bottom = 44.0
+script = ExtResource( 3 )
+
+[node name="Hover" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+
+[node name="Click" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+
+[connection signal="mouse_entered" from="." to="." method="_on_Button_mouse_entered"]
+[connection signal="pressed" from="." to="." method="_on_Button_pressed"]

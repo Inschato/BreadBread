@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/BreadBread Game Over Jingle.mp3-6b64512ec23f5295b095b4f9b017ec18.mp3str"
+
+[deps]
+
+source_file="res://sounds/BreadBread Game Over Jingle.mp3"
+dest_files=[ "res://.import/BreadBread Game Over Jingle.mp3-6b64512ec23f5295b095b4f9b017ec18.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

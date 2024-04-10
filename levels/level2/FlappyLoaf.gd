@@ -12,7 +12,7 @@ func game_over():
 		playing = false
 		$Player.hide()
 		$Player/CollisionPolygon2D.set_deferred("disabled", true)
-		emit_signal("game_over", score >= 5)
+		emit_signal("game_over", self, score >= 5)
 		$Music.stop()
 		$DeathSound.play()
 
@@ -30,7 +30,9 @@ func new_game():
 	$WallTimer.start()
 	spawn_walls(-300)
 	spawn_walls(0)
+	$DeathSound.stop()
 	$Music.play()
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

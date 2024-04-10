@@ -1,16 +1,24 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://fonts/Gingerbread-ExEW.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Main.gd" type="Script" id=2]
 [ext_resource path="res://ui/Options.tscn" type="PackedScene" id=3]
-[ext_resource path="res://music/BreadBread_Menu.mp3" type="AudioStream" id=4]
+[ext_resource path="res://music/BreadBread Menu.mp3" type="AudioStream" id=4]
 [ext_resource path="res://PauseMenu.gd" type="Script" id=5]
+[ext_resource path="res://SoundManager.gd" type="Script" id=6]
+[ext_resource path="res://ui/BreadButton.tscn" type="PackedScene" id=7]
 
 [sub_resource type="InputEventAction" id=2]
 action = "ui_cancel"
 
 [sub_resource type="ShortCut" id=3]
 shortcut = SubResource( 2 )
+
+[sub_resource type="InputEventAction" id=6]
+action = "skip_level"
+
+[sub_resource type="ShortCut" id=7]
+shortcut = SubResource( 6 )
 
 [sub_resource type="DynamicFont" id=1]
 size = 48
@@ -36,12 +44,19 @@ pause_mode = 2
 layer = 2
 script = ExtResource( 5 )
 
-[node name="HiddenEscButton" type="Button" parent="MenuHolder"]
+[node name="HiddenEscButton" parent="MenuHolder" instance=ExtResource( 7 )]
 margin_left = -312.0
 margin_top = -208.0
 margin_right = -192.0
 margin_bottom = -164.0
 shortcut = SubResource( 3 )
+
+[node name="HiddenSkipButton" parent="MenuHolder" instance=ExtResource( 7 )]
+margin_left = -176.0
+margin_top = -208.0
+margin_right = -146.0
+margin_bottom = -164.0
+shortcut = SubResource( 7 )
 
 [node name="MessageCanvas" type="CanvasLayer" parent="MenuHolder"]
 
@@ -73,13 +88,12 @@ margin_top = -18.0
 margin_right = 127.0
 margin_bottom = 74.0
 
-[node name="NextLevelButton" type="Button" parent="MenuHolder/RetryMenu/GridContainer"]
+[node name="NextLevelButton" parent="MenuHolder/RetryMenu/GridContainer" instance=ExtResource( 7 )]
 margin_right = 254.0
-margin_bottom = 44.0
 disabled = true
 text = "Next Level"
 
-[node name="RetryButton" type="Button" parent="MenuHolder/RetryMenu/GridContainer"]
+[node name="RetryButton" parent="MenuHolder/RetryMenu/GridContainer" instance=ExtResource( 7 )]
 margin_top = 48.0
 margin_right = 254.0
 margin_bottom = 92.0
@@ -113,33 +127,31 @@ margin_top = 3.0
 margin_right = 114.0
 margin_bottom = 191.0
 
-[node name="ResumeGameButton" type="Button" parent="MenuHolder/MainMenu/MainMenuGrid"]
+[node name="ResumeGameButton" parent="MenuHolder/MainMenu/MainMenuGrid" instance=ExtResource( 7 )]
 visible = false
 margin_right = 228.0
-margin_bottom = 44.0
 shortcut_in_tooltip = false
 shortcut = SubResource( 5 )
 text = "Resume"
 
-[node name="NewGameButton" type="Button" parent="MenuHolder/MainMenu/MainMenuGrid"]
+[node name="NewGameButton" parent="MenuHolder/MainMenu/MainMenuGrid" instance=ExtResource( 7 )]
 margin_right = 228.0
-margin_bottom = 44.0
 text = "New Game"
 
-[node name="LevelSelectButton" type="Button" parent="MenuHolder/MainMenu/MainMenuGrid"]
+[node name="LevelSelectButton" parent="MenuHolder/MainMenu/MainMenuGrid" instance=ExtResource( 7 )]
 margin_top = 48.0
 margin_right = 228.0
 margin_bottom = 92.0
 disabled = true
 text = "???"
 
-[node name="OptionsButton" type="Button" parent="MenuHolder/MainMenu/MainMenuGrid"]
+[node name="OptionsButton" parent="MenuHolder/MainMenu/MainMenuGrid" instance=ExtResource( 7 )]
 margin_top = 96.0
 margin_right = 228.0
 margin_bottom = 140.0
 text = "Options"
 
-[node name="CreditsButton" type="Button" parent="MenuHolder/MainMenu/MainMenuGrid"]
+[node name="CreditsButton" parent="MenuHolder/MainMenu/MainMenuGrid" instance=ExtResource( 7 )]
 margin_top = 144.0
 margin_right = 228.0
 margin_bottom = 188.0
@@ -150,7 +162,6 @@ margin_right = 40.0
 margin_bottom = 40.0
 
 [node name="OptionsMenu" parent="MenuHolder" instance=ExtResource( 3 )]
-layer = 2
 
 [node name="Credits" type="CanvasLayer" parent="MenuHolder"]
 layer = 2
@@ -168,7 +179,9 @@ bbcode_text = " [center][color=#492000]Programming, Art, Design
 Inschato
 
 Music and sound
-[rainbow freq=0.2 sat=1 val=0.6]Winnerbit[/rainbow]
+[rainbow freq=0.2 sat=1 val=0.6]TwistBit
+(Winnerbit)
+[/rainbow]
 
 Gingerbread Font
 [url=https://www.fontspace.com/gingerbread-font-f30406]HAWTPIXEL[/url]
@@ -177,13 +190,15 @@ text = " Programming, Art, Design
 Inschato
 
 Music and sound
-Winnerbit
+TwistBit
+(Winnerbit)
+
 
 Gingerbread Font
 HAWTPIXEL
 "
 
-[node name="BackButton" type="Button" parent="MenuHolder/Credits"]
+[node name="BackButton" parent="MenuHolder/Credits" instance=ExtResource( 7 )]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -194,7 +209,11 @@ margin_right = 60.0
 margin_bottom = -36.0
 text = "Back"
 
+[node name="SoundManager" type="Node" parent="."]
+script = ExtResource( 6 )
+
 [connection signal="pressed" from="MenuHolder/HiddenEscButton" to="MenuHolder" method="_on_HiddenEscButton_pressed"]
+[connection signal="pressed" from="MenuHolder/HiddenSkipButton" to="." method="_on_HiddenSkipButton_pressed"]
 [connection signal="pressed" from="MenuHolder/RetryMenu/GridContainer/NextLevelButton" to="." method="_on_NextLevelButton_pressed"]
 [connection signal="pressed" from="MenuHolder/RetryMenu/GridContainer/RetryButton" to="." method="_on_RetryButton_pressed"]
 [connection signal="pressed" from="MenuHolder/MainMenu/MainMenuGrid/ResumeGameButton" to="MenuHolder" method="_on_ResumeGameButton_pressed"]
