@@ -1,0 +1,15 @@
+[remap]
+
+importer="bitmap"
+type="BitMap"
+path="res://.import/Bread3BitMask.png-e45a47a5cd72a018d7dd231dd1cb3b38.res"
+
+[deps]
+
+source_file="res://art/Bread3BitMask.png"
+dest_files=[ "res://.import/Bread3BitMask.png-e45a47a5cd72a018d7dd231dd1cb3b38.res" ]
+
+[params]
+
+create_from=0
+threshold=0.5
