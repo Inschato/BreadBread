@@ -20,7 +20,10 @@ func _ready():
 	playing = false
 	randomize()
 
-func new_game():
+func new_game(skip_splash=false):
+	if not skip_splash:
+		$SplashScreen.display_splash()
+		yield($SplashScreen, "done_splash")
 	score = 0
 	$HUD.update_score(score)
 	playing = true
@@ -72,4 +75,4 @@ func _on_HUD_next_level():
 
 
 func _on_HUD_retry_level():
-	new_game()
+	new_game(true)

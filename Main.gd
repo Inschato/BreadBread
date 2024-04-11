@@ -85,7 +85,11 @@ func next_level():
 	game_index += 1
 	if (game_index > levels.size() - 1):
 		$GameHolder.remove_child(old_game)
-		show_message("You win!")
+		$MenuHolder/MainMenu/MainMenuGrid/ResumeGameButton.hide()
+		show_message("Thanks for playing!")
+		yield(get_tree().create_timer(1.0, false), "timeout")
+		$Music.play()
+		open()
 		return
 	current_game = get_new_level_instance(game_index)
 	

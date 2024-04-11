@@ -21,7 +21,10 @@ func game_over():
 	$DeathSound.play()
 	$HUD.show_game_over(score >= 10)
 	
-func new_game():
+func new_game(skip_splash=false):
+	if not skip_splash:
+		$SplashScreen.display_splash()
+		yield($SplashScreen, "done_splash") 
 	score = 0
 	$HUD.update_score(score)
 	$HUD.show_message("Get Ready", 1)
@@ -63,4 +66,4 @@ func _on_HUD_next_level():
 	emit_signal("next_level")
 
 func _on_HUD_retry_level():
-	new_game()
+	new_game(true)

@@ -6,7 +6,10 @@ var required_score
 
 signal next_level
 
-func new_game():
+func new_game(skip_splash=false):
+	if not skip_splash:
+		$SplashScreen.display_splash()
+		yield($SplashScreen, "done_splash")
 	score = 0
 	required_score = get_tree().get_nodes_in_group("blocks").size()
 	var ball = ball_scene.instance()
@@ -31,7 +34,7 @@ func ball_exited():
 		$Music.stop()
 
 func _on_HUD_retry_level():
-	new_game()
+	new_game(true)
 
 func _on_HUD_next_level():
 	emit_signal("next_level")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://levels/level2/FlappyLoaf.gd" type="Script" id=1]
 [ext_resource path="res://levels/level2/FlappyPlayer.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://music/BreadBread Level (Cutter).mp3" type="AudioStream" id=4]
 [ext_resource path="res://sounds/BreadBread Game Over Jingle.tres" type="AudioStream" id=5]
 [ext_resource path="res://ui/HUD.tscn" type="PackedScene" id=6]
+[ext_resource path="res://ui/SplashScreen.tscn" type="PackedScene" id=7]
 
 [sub_resource type="LineShape2D" id=1]
 normal = Vector2( 1, 0 )
@@ -51,6 +52,10 @@ stream = ExtResource( 5 )
 bus = "Sound"
 
 [node name="HUD" parent="." instance=ExtResource( 6 )]
+
+[node name="SplashScreen" parent="." instance=ExtResource( 7 )]
+game_name = "FlappyLoaf"
+level_number = 2
 
 [connection signal="hit" from="Player" to="." method="game_over"]
 [connection signal="timeout" from="WallTimer" to="." method="spawn_walls"]

@@ -9,7 +9,7 @@
 [ext_resource path="res://ui/BreadButton.tscn" type="PackedScene" id=7]
 
 [sub_resource type="InputEventAction" id=2]
-action = "ui_cancel"
+action = "open_menu"
 
 [sub_resource type="ShortCut" id=3]
 shortcut = SubResource( 2 )
@@ -32,6 +32,10 @@ shortcut = SubResource( 4 )
 
 [node name="Main" type="Node"]
 script = ExtResource( 2 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
 
 [node name="GameHolder" type="Node" parent="."]
 
@@ -61,15 +65,8 @@ shortcut = SubResource( 7 )
 [node name="MessageCanvas" type="CanvasLayer" parent="MenuHolder"]
 
 [node name="Message" type="Label" parent="MenuHolder/MessageCanvas"]
-visible = false
-anchor_left = 0.5
-anchor_top = 0.427
-anchor_right = 0.5
-anchor_bottom = 0.427
-margin_left = -120.0
-margin_top = -19.2
-margin_right = 125.0
-margin_bottom = 19.8
+anchor_right = 1.0
+anchor_bottom = 1.0
 text = "Game Over"
 align = 1
 valign = 1
@@ -155,8 +152,10 @@ Inschato
 
 Music and sound
 [rainbow freq=0.2 sat=1 val=0.6]TwistBit
-(Winnerbit)
-[/rainbow]
+(Winnerbit)[/rainbow]
+
+Voices
+Bread - Inschato
 
 Gingerbread Font
 [url=https://www.fontspace.com/gingerbread-font-f30406]HAWTPIXEL[/url]
@@ -168,6 +167,8 @@ Music and sound
 TwistBit
 (Winnerbit)
 
+Voices
+Bread - Inschato
 
 Gingerbread Font
 HAWTPIXEL
@@ -179,9 +180,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 margin_left = -64.0
-margin_top = -80.0
+margin_top = -51.0
 margin_right = 60.0
-margin_bottom = -36.0
+margin_bottom = -7.0
 text = "Back"
 
 [node name="SoundManager" type="Node" parent="."]
