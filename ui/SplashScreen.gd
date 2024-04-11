@@ -18,6 +18,7 @@ func _ready():
 func display_splash():
 	show()
 	$SplashLengthTimer.start()
+	return self
 
 func _on_SplashLengthTimer_timeout():
 	emit_signal("done_splash")

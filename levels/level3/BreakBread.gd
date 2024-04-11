@@ -8,8 +8,7 @@ signal next_level
 
 func new_game(skip_splash=false):
 	if not skip_splash:
-		$SplashScreen.display_splash()
-		yield($SplashScreen, "done_splash")
+		yield($SplashScreen.display_splash(), "done_splash")
 	score = 0
 	required_score = get_tree().get_nodes_in_group("blocks").size()
 	var ball = ball_scene.instance()

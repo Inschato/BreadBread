@@ -167,6 +167,7 @@ stream = ExtResource( 7 )
 bus = "Music"
 
 [node name="SplashScreen" parent="." instance=ExtResource( 8 )]
+visible = false
 game_name = "BreakBread"
 level_number = 3
 

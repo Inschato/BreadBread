@@ -22,8 +22,7 @@ func _ready():
 
 func new_game(skip_splash=false):
 	if not skip_splash:
-		$SplashScreen.display_splash()
-		yield($SplashScreen, "done_splash")
+		yield($SplashScreen.display_splash(), "done_splash")
 	score = 0
 	$HUD.update_score(score)
 	playing = true

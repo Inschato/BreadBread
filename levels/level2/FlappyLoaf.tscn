@@ -54,6 +54,7 @@ bus = "Sound"
 [node name="HUD" parent="." instance=ExtResource( 6 )]
 
 [node name="SplashScreen" parent="." instance=ExtResource( 7 )]
+visible = false
 game_name = "FlappyLoaf"
 level_number = 2
 
