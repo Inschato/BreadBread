@@ -27,8 +27,3 @@ func _on_ResumeGameButton_pressed():
 	$MainMenu.hide()
 	get_tree().paused = false
 	$HiddenEscButton.disabled = false
-	if ($RetryMenu.visible):
-		if (not $RetryMenu/GridContainer/NextLevelButton.disabled):
-			$RetryMenu/GridContainer/NextLevelButton.grab_focus()
-		else:
-			$RetryMenu/GridContainer/RetryButton.grab_focus()

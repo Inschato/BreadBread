@@ -2,7 +2,7 @@ extends Node
 
 export (PackedScene) var mob_scene
 var score
-signal game_over
+signal next_level
 signal show_message
 
 # Called when the node enters the scene tree for the first time.
@@ -17,15 +17,14 @@ func _ready():
 func game_over():
 	$ScoreTimer.stop()
 	$MobTimer.stop()
-	# $HUD.show_game_over()
 	$Music.stop()
 	$DeathSound.play()
-	emit_signal("game_over", self, score >= 10)
+	$HUD.show_game_over(score >= 10)
 	
 func new_game():
 	score = 0
 	$HUD.update_score(score)
-	emit_signal("show_message", "Get Ready")
+	$HUD.show_message("Get Ready", 1)
 	get_tree().call_group("mobs", "queue_free")
 	$Player.start($StartPosition.position)
 	$StartTimer.start()
@@ -58,3 +57,10 @@ func _on_ScoreTimer_timeout():
 func _on_StartTimer_timeout():
 	$MobTimer.start()
 	$ScoreTimer.start()
+
+
+func _on_HUD_next_level():
+	emit_signal("next_level")
+
+func _on_HUD_retry_level():
+	new_game()

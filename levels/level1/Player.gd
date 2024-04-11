@@ -58,5 +58,6 @@ func _on_Player_body_entered(_body):
 
 func start(pos):
 	position = pos
+	rotation_degrees = 0
 	show()
 	$CollisionPolygon2D.disabled = false

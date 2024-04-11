@@ -1,7 +1,169 @@
-[gd_scene format=2]
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://levels/level3/Paddle.tscn" type="PackedScene" id=1]
+[ext_resource path="res://ui/HUD.tscn" type="PackedScene" id=2]
+[ext_resource path="res://sounds/BreadBread Game Over Jingle.tres" type="AudioStream" id=3]
+[ext_resource path="res://levels/level3/Block.tscn" type="PackedScene" id=4]
+[ext_resource path="res://levels/level3/BreakBread.gd" type="Script" id=5]
+[ext_resource path="res://art/BreakBreadWall.png" type="Texture" id=6]
+[ext_resource path="res://music/BreadBread Level (Happy).mp3" type="AudioStream" id=7]
 
 [node name="BreakBread" type="Node"]
+script = ExtResource( 5 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+
+[node name="Blocks" type="Node" parent="."]
+
+[node name="Block" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 358, 250 )
+
+[node name="Block2" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 282, 189 )
+
+[node name="Block3" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 251, 250 )
+
+[node name="Block4" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 204, 222 )
+
+[node name="Block5" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 175, 192 )
+
+[node name="Block6" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 181, 129 )
+
+[node name="Block7" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 139, 229 )
+
+[node name="Block8" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 143, 258 )
+
+[node name="Block9" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 138, 193 )
+
+[node name="Block10" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 137, 158 )
+
+[node name="Block11" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 145, 127 )
+
+[node name="Block12" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 206, 164 )
+
+[node name="Block13" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 176, 251 )
+
+[node name="Block14" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 250, 218 )
+
+[node name="Block15" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 251, 183 )
+
+[node name="Block16" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 301, 214 )
+
+[node name="Block17" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 349, 190 )
+
+[node name="Block18" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 340, 219 )
+
+[node name="Block19" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 380, 177 )
+
+[node name="Block20" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 405, 200 )
+
+[node name="Block21" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 395, 252 )
+
+[node name="Block22" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 376, 219 )
+
+[node name="Block23" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 461, 249 )
+
+[node name="Block24" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 443, 218 )
+
+[node name="Block25" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 448, 187 )
+
+[node name="Block26" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 475, 169 )
+
+[node name="Block27" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 510, 184 )
+
+[node name="Block28" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 510, 215 )
+
+[node name="Block29" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 496, 244 )
+
+[node name="Block30" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 533, 247 )
+
+[node name="Block31" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 587, 246 )
+
+[node name="Block32" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 577, 216 )
+
+[node name="Block33" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 583, 185 )
+
+[node name="Block34" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 616, 182 )
+
+[node name="Block35" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 620, 250 )
+
+[node name="Block36" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 655, 249 )
+
+[node name="Block37" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 652, 218 )
+
+[node name="Block38" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 648, 188 )
+
+[node name="Block39" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 640, 158 )
+
+[node name="Block40" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 637, 126 )
+
+[node name="Block41" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 636, 96 )
+
+[node name="HUD" parent="." instance=ExtResource( 2 )]
+
+[node name="Paddle" parent="." instance=ExtResource( 1 )]
+position = Vector2( 402, 569 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 400, 300 )
+texture = ExtResource( 6 )
+
+[node name="WallCollider" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="WallCollider"]
+polygon = PoolVector2Array( -27, 623, 33, 601, 34, 560, 28, 534, 28, 461, 33, 424, 32, 392, 33, 364, 34, 334, 24, 236, 24, 212, 33, 169, 33, 104, 29, 87, 30, 30, 44, 20, 278, 21, 297, 24, 344, 24, 358, 27, 363, 45, 378, 51, 437, 51, 445, 44, 448, 27, 457, 23, 506, 23, 532, 21, 629, 23, 757, 21, 767, 27, 767, 27, 771, 32, 771, 95, 768, 122, 768, 163, 776, 217, 773, 272, 767, 333, 768, 435, 771, 464, 771, 538, 766, 566, 767, 608, 829, 610, 833, -39, -48, -33 )
+
+[node name="BallStartPosition" type="Position2D" parent="."]
+position = Vector2( 400, 424 )
+
+[node name="GameOverSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+bus = "Sound"
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+bus = "Music"
+
+[connection signal="next_level" from="HUD" to="." method="_on_HUD_next_level"]
+[connection signal="retry_level" from="HUD" to="." method="_on_HUD_retry_level"]

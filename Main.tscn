@@ -74,31 +74,6 @@ text = "Game Over"
 align = 1
 valign = 1
 
-[node name="RetryMenu" type="CanvasLayer" parent="MenuHolder"]
-pause_mode = 1
-visible = false
-
-[node name="GridContainer" type="GridContainer" parent="MenuHolder/RetryMenu"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -127.0
-margin_top = -18.0
-margin_right = 127.0
-margin_bottom = 74.0
-
-[node name="NextLevelButton" parent="MenuHolder/RetryMenu/GridContainer" instance=ExtResource( 7 )]
-margin_right = 254.0
-disabled = true
-text = "Next Level"
-
-[node name="RetryButton" parent="MenuHolder/RetryMenu/GridContainer" instance=ExtResource( 7 )]
-margin_top = 48.0
-margin_right = 254.0
-margin_bottom = 92.0
-text = "Retry"
-
 [node name="MainMenu" type="CanvasLayer" parent="MenuHolder"]
 layer = 2
 visible = false
@@ -214,8 +189,6 @@ script = ExtResource( 6 )
 
 [connection signal="pressed" from="MenuHolder/HiddenEscButton" to="MenuHolder" method="_on_HiddenEscButton_pressed"]
 [connection signal="pressed" from="MenuHolder/HiddenSkipButton" to="." method="_on_HiddenSkipButton_pressed"]
-[connection signal="pressed" from="MenuHolder/RetryMenu/GridContainer/NextLevelButton" to="." method="_on_NextLevelButton_pressed"]
-[connection signal="pressed" from="MenuHolder/RetryMenu/GridContainer/RetryButton" to="." method="_on_RetryButton_pressed"]
 [connection signal="pressed" from="MenuHolder/MainMenu/MainMenuGrid/ResumeGameButton" to="MenuHolder" method="_on_ResumeGameButton_pressed"]
 [connection signal="pressed" from="MenuHolder/MainMenu/MainMenuGrid/NewGameButton" to="." method="_on_NewGameButton_pressed"]
 [connection signal="pressed" from="MenuHolder/MainMenu/MainMenuGrid/OptionsButton" to="." method="_on_OptionsButton_pressed"]

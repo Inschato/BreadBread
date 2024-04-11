@@ -1,7 +1,7 @@
 extends Node
 
 export (PackedScene) var wall_scene
-signal game_over
+signal next_level
 signal show_message
 
 var score
@@ -12,9 +12,9 @@ func game_over():
 		playing = false
 		$Player.hide()
 		$Player/CollisionPolygon2D.set_deferred("disabled", true)
-		emit_signal("game_over", self, score >= 5)
 		$Music.stop()
 		$DeathSound.play()
+		$HUD.show_game_over(score >= 5)
 
 func _ready():
 	playing = false
@@ -22,9 +22,9 @@ func _ready():
 
 func new_game():
 	score = 0
-	$HUD/Score.text = str(score)
+	$HUD.update_score(score)
 	playing = true
-	emit_signal("show_message", "Go!")
+	$HUD.show_message("Go!", 1)
 	$Player.start($PlayerSpawn.position)
 	get_tree().call_group("walls", "queue_free")
 	$WallTimer.start()
@@ -61,8 +61,15 @@ func spawn_walls(x_offset = 0):
 	add_child(wall2)
 	
 
-
 func _on_ScoreCounter_body_entered(_body):
 	if (playing):
 		score += 1
-		$HUD/Score.text = str(score)
+		$HUD.update_score(score)
+
+
+func _on_HUD_next_level():
+	emit_signal("next_level")
+
+
+func _on_HUD_retry_level():
+	new_game()
