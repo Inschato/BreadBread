@@ -35,6 +35,11 @@ func _ready():
 	$Music.play()
 	load_settings()
 	open()
+	
+func _process(delta):
+	# Hack: On the HTML version if you start playing using controller it might start playing both songs at the same time
+	if current_game and $Music.playing:
+		$Music.stop()
 
 func open():
 	$MenuHolder/MainMenu.show()
