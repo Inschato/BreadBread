@@ -94,6 +94,7 @@ func next_level():
 		$MenuHolder/MainMenu/MainMenuGrid/ResumeGameButton.hide()
 		show_message("Thanks for playing!")
 		yield(get_tree().create_timer(1.0, false), "timeout")
+		current_game = null
 		$Music.play()
 		open()
 		return
