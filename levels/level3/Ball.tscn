@@ -15,7 +15,7 @@ physics_material_override = SubResource( 2 )
 gravity_scale = 0.0
 contacts_reported = 4
 contact_monitor = true
-linear_velocity = Vector2( 400, -400 )
+can_sleep = false
 angular_damp = 0.0
 script = ExtResource( 2 )
 

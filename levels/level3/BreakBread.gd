@@ -7,8 +7,11 @@ var required_score
 signal next_level
 
 func new_game(skip_splash=false):
+	$Paddle.playing = false
+	$Paddle.position = $StartPosition.position
 	if not skip_splash:
 		yield($SplashScreen.display_splash(), "done_splash")
+	$Paddle.playing = true
 	score = 0
 	required_score = get_tree().get_nodes_in_group("blocks").size()
 	var ball = ball_scene.instance()
@@ -19,6 +22,9 @@ func new_game(skip_splash=false):
 	$HUD.update_score(score)
 	get_tree().call_group("blocks", "reset")
 	$Music.play()
+	yield(get_tree().create_timer(1.0), "timeout")
+	ball.start()
+	
 
 func block_hit():
 	score += 1

@@ -66,6 +66,7 @@ margin_left = -176.0
 margin_top = -208.0
 margin_right = -146.0
 margin_bottom = -164.0
+disabled = true
 shortcut = SubResource( 7 )
 
 [node name="MessageCanvas" type="CanvasLayer" parent="MenuHolder"]

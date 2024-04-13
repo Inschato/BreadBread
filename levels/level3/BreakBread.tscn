@@ -171,5 +171,8 @@ visible = false
 game_name = "BreakBread"
 level_number = 3
 
+[node name="StartPosition" type="Position2D" parent="."]
+position = Vector2( 402, 569 )
+
 [connection signal="next_level" from="HUD" to="." method="_on_HUD_next_level"]
 [connection signal="retry_level" from="HUD" to="." method="_on_HUD_retry_level"]

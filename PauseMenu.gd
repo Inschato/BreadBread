@@ -23,8 +23,10 @@ func _on_HiddenEscButton_pressed():
 		$MainMenu.show()
 		$MainMenu/MainMenuGrid/ResumeGameButton.grab_focus()
 		$HiddenEscButton.disabled = true
+		$HiddenSkipButton.disabled = true
 
 func _on_ResumeGameButton_pressed():
 	$MainMenu.hide()
 	get_tree().paused = false
 	$HiddenEscButton.disabled = false
+	$HiddenSkipButton.disabled = false

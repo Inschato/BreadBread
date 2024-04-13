@@ -59,6 +59,7 @@ func _on_NewGameButton_pressed():
 	if old_game:
 		$GameHolder.remove_child(old_game)
 		old_game.queue_free()
+	$MenuHolder/HiddenSkipButton.disabled = false
 	
 func show_message(message):
 	$MenuHolder/MessageCanvas/Message.text = message
@@ -117,4 +118,5 @@ func _on_CreditsLabel_meta_clicked(meta):
 
 
 func _on_HiddenSkipButton_pressed():
-	next_level()
+	if current_game and not get_tree().paused:
+		next_level()
