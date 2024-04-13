@@ -34,7 +34,6 @@ func get_new_level_instance(game_index):
 func _ready():
 	$Music.play()
 	load_settings()
-	open()
 	
 func _process(delta):
 	# Hack: On the HTML version if you start playing using controller it might start playing both songs at the same time
@@ -121,3 +120,8 @@ func _on_CreditsLabel_meta_clicked(meta):
 func _on_HiddenSkipButton_pressed():
 	if current_game and not get_tree().paused:
 		next_level()
+
+
+func _on_SplashButton_pressed():
+	$MenuHolder/SplashButton.hide()
+	open()

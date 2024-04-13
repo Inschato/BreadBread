@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://fonts/Gingerbread-ExEW.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Main.gd" type="Script" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://PauseMenu.gd" type="Script" id=5]
 [ext_resource path="res://SoundManager.gd" type="Script" id=6]
 [ext_resource path="res://ui/BreadButton.tscn" type="PackedScene" id=7]
+[ext_resource path="res://art/Splash.png" type="Texture" id=8]
 
 [sub_resource type="InputEventAction" id=2]
 action = "open_menu"
@@ -143,6 +144,11 @@ margin_bottom = 40.0
 
 [node name="OptionsMenu" parent="MenuHolder" instance=ExtResource( 3 )]
 
+[node name="SplashButton" type="TextureButton" parent="MenuHolder"]
+margin_right = 800.0
+margin_bottom = 600.0
+texture_normal = ExtResource( 8 )
+
 [node name="Credits" type="CanvasLayer" parent="MenuHolder"]
 layer = 2
 visible = false
@@ -206,5 +212,6 @@ script = ExtResource( 6 )
 [connection signal="music_volume_changed" from="MenuHolder/OptionsMenu" to="." method="_on_OptionsMenu_music_volume_changed"]
 [connection signal="options_back" from="MenuHolder/OptionsMenu" to="." method="_on_OptionsMenu_options_back"]
 [connection signal="sound_volume_changed" from="MenuHolder/OptionsMenu" to="." method="_on_OptionsMenu_sound_volume_changed"]
+[connection signal="pressed" from="MenuHolder/SplashButton" to="." method="_on_SplashButton_pressed"]
 [connection signal="meta_clicked" from="MenuHolder/Credits/CreditsLabel" to="." method="_on_CreditsLabel_meta_clicked"]
 [connection signal="pressed" from="MenuHolder/Credits/BackButton" to="." method="credits_back_button_pressed"]
