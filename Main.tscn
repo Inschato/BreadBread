@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://fonts/Gingerbread-ExEW.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Main.gd" type="Script" id=2]
@@ -29,6 +29,12 @@ action = "ui_cancel"
 
 [sub_resource type="ShortCut" id=5]
 shortcut = SubResource( 4 )
+
+[sub_resource type="InputEventAction" id=8]
+action = "ui_cancel"
+
+[sub_resource type="ShortCut" id=9]
+shortcut = SubResource( 8 )
 
 [node name="Main" type="Node"]
 script = ExtResource( 2 )
@@ -184,6 +190,7 @@ margin_left = -64.0
 margin_top = -51.0
 margin_right = 60.0
 margin_bottom = -7.0
+shortcut = SubResource( 9 )
 text = "Back"
 
 [node name="SoundManager" type="Node" parent="."]

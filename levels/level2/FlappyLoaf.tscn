@@ -32,9 +32,6 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="WallTimer" type="Timer" parent="."]
-wait_time = 3.0
-
 [node name="ScoreCounter" type="Area2D" parent="."]
 position = Vector2( 192, 320 )
 collision_layer = 0
@@ -59,7 +56,6 @@ game_name = "FlappyLoaf"
 level_number = 2
 
 [connection signal="hit" from="Player" to="." method="game_over"]
-[connection signal="timeout" from="WallTimer" to="." method="spawn_walls"]
 [connection signal="body_entered" from="ScoreCounter" to="." method="_on_ScoreCounter_body_entered"]
 [connection signal="next_level" from="HUD" to="." method="_on_HUD_next_level"]
 [connection signal="retry_level" from="HUD" to="." method="_on_HUD_retry_level"]

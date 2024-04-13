@@ -6,6 +6,7 @@ signal show_message
 
 var score
 var playing
+var wall_speed
 
 func game_over():
 	if (playing):
@@ -24,12 +25,12 @@ func new_game(skip_splash=false):
 	if not skip_splash:
 		yield($SplashScreen.display_splash(), "done_splash")
 	score = 0
+	wall_speed = 100
 	$HUD.update_score(score)
 	playing = true
 	$HUD.show_message("Go!", 1)
 	$Player.start($PlayerSpawn.position)
 	get_tree().call_group("walls", "queue_free")
-	$WallTimer.start()
 	spawn_walls(-300)
 	spawn_walls(0)
 	$DeathSound.stop()
@@ -43,7 +44,7 @@ func new_game(skip_splash=false):
 func spawn_walls(x_offset = 0):
 	var wall1 = wall_scene.instance()
 	var wall2 = wall_scene.instance()
-	wall2.get_node("Sprite").scale.x = -2	
+	wall2.get_node("Sprite").scale.x = -2
 	wall2.get_node("CollisionPolygon2D").scale.y = -2
 	wall2.set_collision_layer_bit(1, true) # Detect score when passing
 	
@@ -52,9 +53,8 @@ func spawn_walls(x_offset = 0):
 	wall1.position = wall_spawn_location + Vector2(x_offset, -300)
 	wall2.position = wall_spawn_location + Vector2(x_offset, 300)
 		
-	var velocity = Vector2(-100, 0.0)
-	wall1.linear_velocity = velocity
-	wall2.linear_velocity = velocity
+	wall1.initialize_speed(wall_speed)
+	wall2.initialize_speed(wall_speed)
 	
 	wall1.connect("hit", self, "game_over")
 	wall2.connect("hit", self, "game_over")
@@ -67,6 +67,11 @@ func _on_ScoreCounter_body_entered(_body):
 	if (playing):
 		score += 1
 		$HUD.update_score(score)
+		
+		if (score % 5 == 0):
+			wall_speed += 10
+			get_tree().call_group("walls", "set_speed", wall_speed)
+	spawn_walls()
 
 
 func _on_HUD_next_level():
