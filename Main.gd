@@ -10,8 +10,8 @@ var settings_path = "user://settings.cfg"
 
 var settings_data = {}
 var settings = ConfigFile.new()
-var game_index = 0
-var current_game
+var current_level_index = 0
+var current_level
 
 func load_settings():
 	settings.load(settings_path)
@@ -26,18 +26,19 @@ func save_settings():
 	settings.set_value("preferences", "sound", settings_data["sound_volume"])
 	settings.save(settings_path)
 	
-func get_new_level_instance(game_index):
-	var level = levels[game_index].instance()
+func get_new_level_instance(level_index):
+	var level = levels[level_index].instance()
 	level.connect("next_level", self, "next_level")
 	return level
 
 func _ready():
 	$Music.play()
 	load_settings()
+	open()
 	
-func _process(delta):
+func _process(_delta):
 	# Hack: On the HTML version if you start playing using controller it might start playing both songs at the same time
-	if current_game and $Music.playing:
+	if current_level and $Music.playing:
 		$Music.stop()
 
 func open():
@@ -45,19 +46,19 @@ func open():
 	$MenuHolder/MainMenu/MainMenuGrid/NewGameButton.grab_focus()
 
 func _on_NewGameButton_pressed():
-	var old_game = current_game
-	game_index = 0
+	var old_level = current_level
+	current_level_index = 0
 	get_tree().paused = false
 	$MenuHolder/HiddenEscButton.disabled = false
 	$Music.stop()
 	$MenuHolder/MainMenu.hide()
 	$MenuHolder/MainMenu/MainMenuGrid/ResumeGameButton.show()
-	current_game = get_new_level_instance(game_index)
-	$GameHolder.add_child(current_game)
-	current_game.new_game()
-	if old_game:
-		$GameHolder.remove_child(old_game)
-		old_game.queue_free()
+	current_level = get_new_level_instance(current_level_index)
+	$GameHolder.add_child(current_level)
+	current_level.new_game()
+	if old_level:
+		$GameHolder.remove_child(old_level)
+		old_level.queue_free()
 	$MenuHolder/HiddenSkipButton.disabled = false
 	
 func show_message(message):
@@ -86,22 +87,22 @@ func _on_OptionsMenu_sound_volume_changed(value):
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Sound"), linear2db(settings_data["sound_volume"]))
 
 func next_level():
-	var old_game = current_game
-	game_index += 1
-	if (game_index > levels.size() - 1):
-		$GameHolder.remove_child(old_game)
+	var old_level = current_level
+	current_level_index += 1
+	if (current_level_index > levels.size() - 1):
+		$GameHolder.remove_child(old_level)
 		$MenuHolder/MainMenu/MainMenuGrid/ResumeGameButton.hide()
 		show_message("Thanks for playing!")
 		yield(get_tree().create_timer(1.0, false), "timeout")
-		current_game = null
+		current_level = null
 		$Music.play()
 		open()
 		return
-	current_game = get_new_level_instance(game_index)
+	current_level = get_new_level_instance(current_level_index)
 	
-	$GameHolder.remove_child(old_game)
-	$GameHolder.add_child(current_game)
-	current_game.new_game()
+	$GameHolder.remove_child(old_level)
+	$GameHolder.add_child(current_level)
+	current_level.new_game()
 
 func _on_CreditsButton_pressed():
 	$MenuHolder/MainMenu.hide()
@@ -114,14 +115,9 @@ func credits_back_button_pressed():
 
 
 func _on_CreditsLabel_meta_clicked(meta):
-	OS.shell_open(str(meta))
+	var __ = OS.shell_open(str(meta))
 
 
 func _on_HiddenSkipButton_pressed():
-	if current_game and not get_tree().paused:
+	if current_level and not get_tree().paused:
 		next_level()
-
-
-func _on_SplashButton_pressed():
-	$MenuHolder/SplashButton.hide()
-	open()

@@ -7,6 +7,7 @@
 [node name="BreadButton" type="Button"]
 margin_right = 6.0
 margin_bottom = 44.0
+shortcut_in_tooltip = false
 script = ExtResource( 3 )
 
 [node name="Hover" type="AudioStreamPlayer" parent="."]

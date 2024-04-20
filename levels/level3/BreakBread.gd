@@ -22,7 +22,7 @@ func new_game(skip_splash=false):
 	$HUD.update_score(score)
 	get_tree().call_group("blocks", "reset")
 	$Music.play()
-	yield(get_tree().create_timer(1.0), "timeout")
+	yield(get_tree().create_timer(1.0, false), "timeout")
 	ball.start()
 	
 
